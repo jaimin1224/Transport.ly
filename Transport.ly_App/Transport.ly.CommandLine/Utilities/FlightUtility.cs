@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Transport.ly.CommandLine.Models;
 
@@ -26,6 +27,19 @@ namespace Transport.ly.CommandLine.Utilities
 
             // return the flights
             return flights;
+        }
+
+        public static void GenerateFlightSchedules()
+        {
+            List<FlightSchedule> flightSchedules = GetFlightSchedules();
+
+            flightSchedules = flightSchedules.Where(x => x.FlightId != 0).ToList(); // remove flight id = 0
+
+            foreach (var item in flightSchedules)
+            {
+                // Using string interpolation to output the result 
+                Console.WriteLine($"Flight: {item.FlightId}, departure: {item.Departure}, arrival: {item.Arrival}, day: {item.Day}");
+            }
         }
     }
 }

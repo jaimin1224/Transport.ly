@@ -20,9 +20,9 @@ namespace Transport.ly.CommandLine.Utilities
 
             Dictionary<string, Order> orders = JsonConvert.DeserializeObject<Dictionary<string, Order>>(ordersJson);
 
-            // set appropriate flight id for each order
             int YYZOrderCount = 0, YYCOrderCount = 0, YVROrderCount = 0;
 
+            // set appropriate flight id for each order
             foreach (var item in orders)
             {
                 if (item.Value.Destination == "YYZ")
@@ -66,8 +66,7 @@ namespace Transport.ly.CommandLine.Utilities
                 }
                 else
                 {
-                    // not scheduled flight
-                    // keep flight id = 0
+                    // not scheduled flight, so we keep flight id = 0
                     continue;
                 }
             }

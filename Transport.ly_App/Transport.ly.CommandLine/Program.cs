@@ -14,15 +14,11 @@ namespace Transport.ly.CommandLine
     {
         static void Main(string[] args)
         {
-            List<FlightSchedule> flightSchedules = FlightUtility.GetFlightSchedules();
+            Console.WriteLine("********** FLIGHT SCHEDULES **********");
 
-            flightSchedules = flightSchedules.Where(x => x.FlightId != 0).ToList(); // remove flight = 0
+            FlightUtility.GenerateFlightSchedules();
 
-            foreach (var item in flightSchedules)
-            {
-                // Using string interpolation to output the result 
-                Console.WriteLine($"Flight: {item.FlightId}, departure: {item.Departure}, arrival: {item.Arrival}, day: {item.Day}");
-            }
+            Console.WriteLine("********** FLIGHT ITENARIES **********");
 
             OrderUtility.GenerateFlightItenaries();
 
