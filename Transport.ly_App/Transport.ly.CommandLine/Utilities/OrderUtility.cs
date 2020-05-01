@@ -13,6 +13,7 @@ namespace Transport.ly.CommandLine.Utilities
     /// </summary>
     public class OrderUtility
     {
+        private const int FlightLoadingCapacity = 20;
         public static void GenerateFlightItenaries()
         {
             // get json file
@@ -27,7 +28,7 @@ namespace Transport.ly.CommandLine.Utilities
             {
                 if (item.Value.Destination == "YYZ")
                 {
-                    if (YYZOrderCount < 20)
+                    if (YYZOrderCount < FlightLoadingCapacity)
                     {
                         item.Value.FlightId = 1;
                     }
@@ -40,7 +41,7 @@ namespace Transport.ly.CommandLine.Utilities
                 }
                 else if (item.Value.Destination == "YYC")
                 {
-                    if (YYCOrderCount < 20)
+                    if (YYCOrderCount < FlightLoadingCapacity)
                     {
                         item.Value.FlightId = 2;
                     }
@@ -53,7 +54,7 @@ namespace Transport.ly.CommandLine.Utilities
                 }
                 else if (item.Value.Destination == "YVR")
                 {
-                    if (YVROrderCount < 20)
+                    if (YVROrderCount < FlightLoadingCapacity)
                     {
                         item.Value.FlightId = 3;
                     }
@@ -66,8 +67,7 @@ namespace Transport.ly.CommandLine.Utilities
                 }
                 else
                 {
-                    // not scheduled flight, so we keep flight id = 0
-                    continue;
+                    continue; // not scheduled flight, so we keep flight id = 0 and continue
                 }
             }
 
